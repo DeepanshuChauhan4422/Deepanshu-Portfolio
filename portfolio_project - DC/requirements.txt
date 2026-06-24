@@ -1,0 +1,6 @@
+django
+reportlab
+gunicorn
+pillow
+whitenoise
+dj-database-url

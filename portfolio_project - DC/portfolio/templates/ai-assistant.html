@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepanshu Assistant | Deepanshu Chauhan</title>
+    
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="Talk to Deepanshu Assistant. Ask about his software development skills, projects, certifications, HCL Trainee experience, and strengths.">
+    <meta name="keywords" content="Deepanshu Chauhan AI, Deepanshu Assistant, Gemini API, ChatGPT portfolio, python recruiter chat">
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body style="overflow: hidden;">
+
+    <div class="ai-page-layout">
+        
+        <!-- Sidebar -->
+        <aside class="ai-sidebar">
+            <div class="ai-sidebar-header">
+                <div class="ai-logo-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div>
+                    <h2 class="ai-sidebar-title">Deepanshu AI</h2>
+                    <span class="ai-sidebar-desc">Deepanshu Assistant</span>
+                </div>
+            </div>
+
+            <nav class="ai-sidebar-nav">
+                <a href="{% url 'home' %}" class="ai-nav-btn">
+                    <i class="fas fa-arrow-left"></i> Back to Portfolio
+                </a>
+                <a href="#" class="ai-nav-btn active">
+                    <i class="fas fa-comments"></i> Live Chat Session
+                </a>
+                <a href="mailto:deepanshuchauhan2244@gmail.com" class="ai-nav-btn">
+                    <i class="fas fa-envelope"></i> Email Deepanshu
+                </a>
+                <a href="{% static 'resume.pdf' %}" download class="ai-nav-btn">
+                    <i class="fas fa-file-pdf"></i> Download Resume PDF
+                </a>
+            </nav>
+
+            <!-- Quick Starter Questions List -->
+            <div>
+                <h3 class="quick-questions-header">Suggested Questions</h3>
+                <div class="quick-questions">
+                    <button class="quick-q-btn" data-question="Who is Deepanshu Chauhan?">Who is Deepanshu Chauhan?</button>
+                    <button class="quick-q-btn" data-question="What projects has he built?">What projects has he built?</button>
+                    <button class="quick-q-btn" data-question="What technologies does he know?">What technologies does he know?</button>
+                    <button class="quick-q-btn" data-question="Tell me about his HCL training experience.">Tell me about HCL training?</button>
+                    <button class="quick-q-btn" data-question="What are his strengths?">What are his strengths?</button>
+                    <button class="quick-q-btn" data-question="How can I contact him?">How can I contact him?</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="ai-chat-container">
+            <!-- Header bar -->
+            <header class="ai-chat-header">
+                <div class="ai-chat-header-info">
+                    <div class="status-indicator"></div>
+                    <div>
+                        <h3 style="font-size: 1.05rem;">Deepanshu Assistant</h3>
+                        <span style="font-size: 0.75rem; color: var(--text-muted);">Active Response Engine</span>
+                    </div>
+                </div>
+                
+                <div style="display:flex; align-items:center; gap: 16px;">
+                    <a href="{% url 'home' %}" style="font-size: 0.9rem; color: var(--text-secondary); display:flex; align-items:center; gap:6px;">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                </div>
+            </header>
+
+            <!-- Message feed scroll container -->
+            <div class="ai-chat-messages" id="chat-messages">
+                <!-- Messages will be dynamically rendered here via chat.js -->
+            </div>
+
+            <!-- Input submit bar -->
+            <footer class="ai-chat-input-area">
+                <form id="chat-form" class="ai-chat-form">
+                    {% csrf_token %}
+                    <div class="ai-chat-input-wrapper">
+                        <input type="text" id="chat-input" class="ai-chat-input" placeholder="Ask about Deepanshu's skills, projects, strengths, or experience..." autocomplete="off">
+                    </div>
+                    <button type="submit" class="chat-submit-btn" aria-label="Send message">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </footer>
+        </main>
+
+    </div>
+
+    <!-- AI Chat Specific Scripts -->
+    <script src="{% static 'js/chat.js' %}"></script>
+</body>
+</html>

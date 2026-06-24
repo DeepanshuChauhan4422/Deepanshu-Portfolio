@@ -1,0 +1,325 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepanshu Chauhan - Resume</title>
+    
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="Official Resume of Deepanshu Chauhan, a B.Tech Computer Science student specializing in AIML, Python Developer, and aspiring Software Engineer.">
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <style>
+        /* Resume View Page Custom Styling */
+        .resume-page-container {
+            padding-top: 100px;
+            padding-bottom: 60px;
+            min-height: 100vh;
+            background: var(--bg-base);
+        }
+        
+        .resume-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+        
+        .resume-paper {
+            background: #ffffff;
+            color: #1A1A1A;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-radius: 4px;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+        }
+        
+        .resume-paper h1, .resume-paper h2, .resume-paper h3, .resume-paper h4 {
+            color: #1A1A1A;
+        }
+        
+        .resume-header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #1A1A1A;
+            padding-bottom: 15px;
+        }
+        
+        .resume-name {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        
+        .resume-contact-info {
+            font-size: 0.9rem;
+            color: #444444;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+        }
+        
+        .resume-contact-info a {
+            color: #0D47A1;
+            text-decoration: underline;
+        }
+        
+        .resume-section {
+            margin-bottom: 24px;
+        }
+        
+        .resume-section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-bottom: 1px solid #CCCCCC;
+            padding-bottom: 4px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .resume-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px 30px;
+            font-size: 0.95rem;
+            color: #444444;
+        }
+        
+        .resume-grid-2 strong {
+            color: #1A1A1A;
+        }
+        
+        .resume-item {
+            margin-bottom: 16px;
+        }
+        
+        .resume-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4px;
+        }
+        
+        .resume-item-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1A1A1A;
+        }
+        
+        .resume-item-date {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #0D47A1;
+        }
+        
+        .resume-item-subtitle {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: #666666;
+            margin-bottom: 6px;
+        }
+        
+        .resume-bullets {
+            list-style: none;
+            padding-left: 15px;
+        }
+        
+        .resume-bullets li {
+            position: relative;
+            font-size: 0.9rem;
+            color: #444444;
+            margin-bottom: 4px;
+        }
+        
+        .resume-bullets li::before {
+            content: "•";
+            position: absolute;
+            left: -12px;
+            color: #1A1A1A;
+        }
+        
+        .resume-bullets li a {
+            color: #0D47A1;
+            text-decoration: underline;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: #ffffff;
+                color: #1A1A1A;
+            }
+            .navbar, .resume-actions, .footer {
+                display: none !important;
+            }
+            .resume-page-container {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+            .resume-paper {
+                box-shadow: none;
+                padding: 0;
+                margin: 0;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="{% url 'home' %}" class="logo">D.C</a>
+            <ul class="nav-links">
+                <li class="nav-item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="nav-item active"><a href="#">Resume</a></li>
+                <li class="nav-item"><a href="{% url 'ai_assistant' %}" class="text-gradient"><i class="fas fa-robot"></i> Ask AI</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Resume Page Area -->
+    <div class="resume-page-container">
+        <div class="container">
+            
+            <!-- Floating Actions -->
+            <div class="resume-actions">
+                <a href="{% url 'home' %}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Home
+                </a>
+                <a href="{% static 'resume.pdf' %}" download class="btn btn-primary">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+                <button onclick="window.print()" class="btn btn-secondary">
+                    <i class="fas fa-print"></i> Print Resume
+                </button>
+            </div>
+            
+            <!-- Paper Sheet -->
+            <div class="resume-paper">
+                
+                <!-- Header -->
+                <header class="resume-header">
+                    <h1 class="resume-name">Deepanshu Chauhan</h1>
+                    <div class="resume-contact-info">
+                        <span><i class="fas fa-envelope"></i> <a href="mailto:Deepanshuchauhan2244@gmail.com">Deepanshuchauhan2244@gmail.com</a></span>
+                        <span>|</span>
+                        <span><i class="fas fa-phone"></i> +91 8791095450</span>
+                        <span>|</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Greater Noida, India</span>
+                        <span>|</span>
+                        <span><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/deepanshu-chauhan-179a40252" target="_blank">LinkedIn</a></span>
+                    </div>
+                </header>
+                
+                <!-- Technologies -->
+                <section class="resume-section">
+                    <h2 class="resume-section-title">Technologies</h2>
+                    <div class="resume-grid-2">
+                        <div>
+                            <p><strong>Languages:</strong> Python, JavaScript</p>
+                            <p style="margin-top: 8px;"><strong>Frameworks:</strong> Django, Flask, FastAPI</p>
+                        </div>
+                        <div>
+                            <p><strong>Web Development Tools:</strong> HTML, CSS, REST APIs, MongoDB, MySQL, Docker, Git, GitHub</p>
+                            <p style="margin-top: 8px;"><strong>Relevant Technologies:</strong> DSA, OS, OOPs, DBMS, CN, Software engineering</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Projects -->
+                <section class="resume-section">
+                    <h2 class="resume-section-title">Projects</h2>
+                    
+                    <!-- Project 1 -->
+                    <div class="resume-item">
+                        <div class="resume-item-header">
+                            <h3 class="resume-item-title">Team Task Manager</h3>
+                        </div>
+                        <ul class="resume-bullets">
+                            <li>Built a full-stack Team Task Manager web application with interactive dashboards, task assignment, progress tracking, and team collaboration features.</li>
+                            <li>Developed secure authentication, task status management, deadline tracking, and a responsive UI to improve productivity and workflow management for teams.</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="resume-item">
+                        <div class="resume-item-header">
+                            <h3 class="resume-item-title">Real Estate Price Prediction</h3>
+                        </div>
+                        <ul class="resume-bullets">
+                            <li>Built an intuitive and responsive UI using HTML, CSS, and JavaScript.</li>
+                            <li>Designed clean input forms for users to enter property details (location, size, amenities, etc.).</li>
+                            <li>Integrated JavaScript to send user data to the prediction model API.</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="resume-item">
+                        <div class="resume-item-header">
+                            <h3 class="resume-item-title">Virtual Family</h3>
+                        </div>
+                        <ul class="resume-bullets">
+                            <li>Developed conversational AI persons (Mother, Father, Guardian) using NLP techniques.</li>
+                            <li>Integrated emotion-aware dialogue handling and voice personality traits.</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Experience -->
+                <section class="resume-section">
+                    <h2 class="resume-section-title">Professional Experience</h2>
+                    
+                    <div class="resume-item">
+                        <div class="resume-item-header">
+                            <h3 class="resume-item-title">HCL TECH, TRAINEE</h3>
+                        </div>
+                        <ul class="resume-bullets">
+                            <li>Completed a 3-month HCL training program focused on industry-oriented IT skills and practical learning.</li>
+                            <li>Strengthened problem-solving, teamwork, and professional communication through guided tasks and assignments.</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Education -->
+                <section class="resume-section">
+                    <h2 class="resume-section-title">Education</h2>
+                    
+                    <div class="resume-item">
+                        <div class="resume-item-header">
+                            <h3 class="resume-item-title">KCC Institute of Technology & Management</h3>
+                            <span class="resume-item-date">08/2022 – 06/2026</span>
+                        </div>
+                        <div class="resume-item-subtitle">Btech in computer science and engineering (AIML)</div>
+                    </div>
+                </section>
+                
+                <!-- Achievements -->
+                <section class="resume-section" style="margin-bottom: 0;">
+                    <h2 class="resume-section-title">Achievements</h2>
+                    <ul class="resume-bullets">
+                        <li><strong>HCL Technologies</strong> — Successfully completed certification from HCL Technologies, gaining knowledge of industry-relevant tools and technologies.</li>
+                        <li><strong>AICTE-SANKALP</strong></li>
+                        <li><strong>SANKALAN</strong> — (Delhi University)</li>
+                    </ul>
+                </section>
+                
+            </div>
+            
+        </div>
+    </div>
+
+</body>
+</html>

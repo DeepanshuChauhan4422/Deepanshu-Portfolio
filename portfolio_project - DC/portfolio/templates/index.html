@@ -1,0 +1,574 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepanshu Chauhan | Full Stack Python Developer Portfolio</title>
+    
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="Portfolio of Deepanshu Chauhan, a B.Tech Computer Science student specializing in AIML, Python Developer, and aspiring Software Engineer. Explore projects, skills, and chat with his AI Recruiter Assistant.">
+    <meta name="keywords" content="Deepanshu Chauhan, Python Developer, Full Stack Developer, Django, FastAPI, Software Engineer Portfolio, KCC ITM, AIML">
+    <meta name="author" content="Deepanshu Chauhan">
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress"></div>
+
+    <!-- Loading Screen -->
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">LOADING PORTFOLIO...</div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">D.C</a>
+            
+            <ul class="nav-links">
+                <li class="nav-item active"><a href="#home">Home</a></li>
+                <li class="nav-item"><a href="#about">About</a></li>
+                <li class="nav-item"><a href="#skills">Skills</a></li>
+                <li class="nav-item"><a href="#projects">Projects</a></li>
+                <li class="nav-item"><a href="#timeline">Timeline</a></li>
+                <li class="nav-item"><a href="{% url 'resume' %}">Resume</a></li>
+                <li class="nav-item"><a href="#contact">Contact</a></li>
+                <li class="nav-item"><a href="{% url 'ai_assistant' %}" class="text-gradient"><i class="fas fa-robot"></i> Ask AI</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark theme">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button id="mobile-toggle" class="mobile-toggle" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <canvas id="particle-canvas"></canvas>
+        <div class="hero-bg-blobs">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <span class="hero-welcome">WELCOME TO MY PORTFOLIO</span>
+                    <h1 class="hero-title">Deepanshu Chauhan</h1>
+                    <h2 class="hero-subtitle">
+                        I'm a <span id="typewriter" class="text-gradient"></span>
+                    </h2>
+                    <p class="hero-tagline">
+                        Building Scalable Web Applications and Intelligent Solutions. Focused on writing clean, efficient backend services and responsive frontend designs.
+                    </p>
+                    
+                    <div class="hero-buttons">
+                        <a href="{% static 'resume.pdf' %}" download class="btn btn-primary">
+                            <i class="fas fa-download"></i> Download Resume
+                        </a>
+                        <a href="{% url 'resume' %}" class="btn btn-secondary">
+                            <i class="fas fa-file-alt"></i> View Resume
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fas fa-paper-plane"></i> Contact Me
+                        </a>
+                        <a href="#projects" class="btn btn-secondary">
+                            <i class="fas fa-tasks"></i> View Projects
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Interactive IDE Console Panel Graphic -->
+                <div class="hero-art">
+                    <div class="console-card glass-panel">
+                        <div class="console-header">
+                            <div class="console-dot dot-red"></div>
+                            <div class="console-dot dot-yellow"></div>
+                            <div class="console-dot dot-green"></div>
+                        </div>
+                        <div class="console-body">
+                            <div class="console-line">
+                                <span class="gray">&gt;&gt;&gt;</span> <span class="white">developer = {</span>
+                            </div>
+                            <div class="console-line">
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="white">"name":</span> <span class="green">"Deepanshu Chauhan"</span>,
+                            </div>
+                            <div class="console-line">
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="white">"role":</span> <span class="green">"Software Engineer"</span>,
+                            </div>
+                            <div class="console-line">
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="white">"core_skills":</span> <span class="white">[</span><span class="green">"Python"</span>, <span class="green">"Django"</span>, <span class="green">"JS"</span><span class="white">]</span>,
+                            </div>
+                            <div class="console-line">
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="white">"current_focus":</span> <span class="green">"Scalable APIs & AI"</span>
+                            </div>
+                            <div class="console-line">
+                                <span class="white">}</span>
+                            </div>
+                            <div class="console-line">
+                                <span class="gray">&gt;&gt;&gt;</span> <span class="white">developer.is_ready_to_hire()</span>
+                            </div>
+                            <div class="console-line">
+                                <span class="yellow">True</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About <span>Me</span></h2>
+                <p class="section-subtitle">A brief introduction to my background, aspirations, and goals.</p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-img-container">
+                    <div class="about-img-frame">
+                        <!-- Generative Abstract Developer Graphic in place of missing image -->
+                        <svg viewBox="0 0 100 100" style="background:#0f172a; width: 100%; height: 100%;">
+                            <defs>
+                                <linearGradient id="circGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#4364f7" />
+                                    <stop offset="100%" stop-color="#00f2fe" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="50" cy="50" r="30" fill="url(#circGrad)" opacity="0.8" />
+                            <text x="50%" y="54%" font-family="'Outfit', sans-serif" font-size="14" fill="#0f172a" font-weight="bold" text-anchor="middle">PYTHON</text>
+                            <circle cx="50" cy="50" r="42" stroke="url(#circGrad)" stroke-width="1" fill="none" stroke-dasharray="5,3" />
+                        </svg>
+                    </div>
+                    <div class="about-img-glow"></div>
+                </div>
+                
+                <div class="about-text">
+                    <h3>Aspiring Software Engineer & Python Developer</h3>
+                    <p class="about-bio">
+                        I am currently pursuing my B.Tech in Computer Science and Engineering with a specialization in Artificial Intelligence & Machine Learning (AIML) at KCC Institute of Technology & Management. I have a deep passion for writing clean backend code, designing scalable microservices, and solving algorithmic problems.
+                    </p>
+                    <p class="about-bio">
+                        With solid hands-on experience in Python and the Django ecosystem, I enjoy bridging the gap between database performance, application logic, and elegant user interfaces. I am actively preparing for full-stack and backend engineering opportunities where I can contribute to meaningful engineering solutions.
+                    </p>
+                    
+                    <div class="about-info-grid">
+                        <div class="info-item"><strong>Degree:</strong> <span>B.Tech CSE (AIML)</span></div>
+                        <div class="info-item"><strong>Location:</strong> <span>Greater Noida, India</span></div>
+                        <div class="info-item"><strong>Email:</strong> <span>deepanshuchauhan2244@gmail.com</span></div>
+                        <div class="info-item"><strong>Availability:</strong> <span>Open to Opportunities</span></div>
+                    </div>
+
+                    <a href="{% url 'ai_assistant' %}" class="btn btn-primary">
+                        <i class="fas fa-comments-blur"></i> Chat with Deepanshu Assistant
+                    </a>
+                </div>
+            </div>
+
+            <!-- Statistics Grid -->
+            <div class="stats-grid">
+                <div class="stat-card glass-panel">
+                    <div class="stat-number" data-target="5">0</div>
+                    <div class="stat-label">Projects Built</div>
+                </div>
+                <div class="stat-card glass-panel">
+                    <div class="stat-number" data-target="10">0</div>
+                    <div class="stat-label">Core Techs</div>
+                </div>
+                <div class="stat-card glass-panel">
+                    <div class="stat-number" data-target="300">0</div>
+                    <div class="stat-label">Git Commits</div>
+                </div>
+                <div class="stat-card glass-panel">
+                    <div class="stat-number" data-target="3">0</div>
+                    <div class="stat-label">Months HCL Trainee</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Technical <span>Skills</span></h2>
+                <p class="section-subtitle">Proficiencies in programming languages, frameworks, databases, and software tools.</p>
+            </div>
+            
+            <div class="skills-grid">
+                <!-- Category 1: Languages & Frameworks -->
+                <div class="skills-category glass-panel">
+                    <h3><i class="fas fa-code"></i> Languages & Frameworks</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Python</span>
+                                <span class="skill-pct">90%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="90%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Django / FastAPI</span>
+                                <span class="skill-pct">85%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Flask</span>
+                                <span class="skill-pct">80%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-pct">75%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="75%"></div></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Category 2: Databases & Web Tools -->
+                <div class="skills-category glass-panel">
+                    <h3><i class="fas fa-database"></i> Databases & Development</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">SQL (MySQL / PostgreSQL / SQLite)</span>
+                                <span class="skill-pct">85%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">MongoDB</span>
+                                <span class="skill-pct">75%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="75%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">REST APIs & Integrations</span>
+                                <span class="skill-pct">85%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Git & Docker Basics</span>
+                                <span class="skill-pct">80%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured <span>Projects</span></h2>
+                <p class="section-subtitle">Real-world applications and projects I have engineered.</p>
+            </div>
+            
+            <!-- Filters -->
+            <div class="projects-filter">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="web">Web Apps</button>
+                <button class="filter-btn" data-filter="ml">AI & ML</button>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card glass-panel" data-category="web">
+                    <div class="project-img-wrapper">
+                        <!-- Generative SVG Mockup for Team Task Manager -->
+                        <svg viewBox="0 0 200 100" style="background:#1e293b; width:100%; height:100%;">
+                            <rect x="10" y="10" width="80" height="35" rx="5" fill="#4364f7" opacity="0.7"/>
+                            <rect x="110" y="10" width="80" height="35" rx="5" fill="#0f172a" stroke="#ffffff" stroke-width="0.5"/>
+                            <text x="25" y="30" font-family="'Outfit'" font-size="8" fill="#ffffff" font-weight="bold">Dashboards</text>
+                            <text x="125" y="30" font-family="'Outfit'" font-size="8" fill="#ffffff">Collaboration</text>
+                            <line x1="20" y1="70" x2="180" y2="70" stroke="#00f2fe" stroke-width="2"/>
+                            <circle cx="90" cy="70" r="5" fill="#4364f7"/>
+                        </svg>
+                        <div class="project-overlay">
+                            <div class="project-overlay-links">
+                                <a href="https://team-task-manager-n72w.onrender.com/" target="_blank" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Team Task Manager</h3>
+                        <p class="project-desc">
+                            A task management platform featuring secure token authentication, task assignment pipelines, progress metrics, and collaborative shared team spaces.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Django</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">SQL</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card glass-panel" data-category="ml">
+                    <div class="project-img-wrapper">
+                        <!-- Generative SVG Mockup for Real Estate -->
+                        <svg viewBox="0 0 200 100" style="background:#1e293b; width:100%; height:100%;">
+                            <path d="M 30,80 L 70,50 L 110,65 L 170,25" fill="none" stroke="#00f2fe" stroke-width="3"/>
+                            <circle cx="170" cy="25" r="4" fill="#4364f7"/>
+                            <text x="30" y="25" font-family="'Outfit'" font-size="10" fill="#94a3b8">Market Prediction</text>
+                        </svg>
+                        <div class="project-overlay">
+                            <div class="project-overlay-links">
+                                <a href="https://real-estate-price-prediction-omega.vercel.app/" target="_blank" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Real Estate Price Predictor</h3>
+                        <p class="project-desc">
+                            A machine learning web tool enabling users to supply property locations, dimensions, and layout features to dynamically predict market pricing models.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Machine Learning</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">HTML/CSS/JS</span>
+                            <span class="project-tag">APIs</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card glass-panel" data-category="ml web">
+                    <div class="project-img-wrapper">
+                        <!-- Generative SVG Mockup for Virtual Family -->
+                        <svg viewBox="0 0 200 100" style="background:#1e293b; width:100%; height:100%;">
+                            <circle cx="60" cy="50" r="18" fill="#4364f7" opacity="0.8"/>
+                            <circle cx="140" cy="50" r="18" fill="#00f2fe" opacity="0.8"/>
+                            <text x="100" y="55" font-family="'Outfit'" font-size="12" fill="#ffffff" font-weight="bold" text-anchor="middle">AI</text>
+                            <path d="M 75,50 Q 100,65 125,50" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="4,2"/>
+                        </svg>
+                        <div class="project-overlay">
+                            <div class="project-overlay-links">
+                                <span style="font-size:0.9rem; font-weight:600; color:#fff; background:rgba(0,0,0,0.6); padding:8px 16px; border-radius:20px; border:1px solid var(--border-color);">Desktop Application</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Virtual Family AI</h3>
+                        <p class="project-desc">
+                            Conversational AI system implementing custom personas (Mother, Father, Guardian) using advanced NLP dialogue structures and emotional sentiment models.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">NLP / AI</span>
+                            <span class="project-tag">Flask / FastAPI</span>
+                            <span class="project-tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dedicated AI recruiter assistant banner -->
+            <div style="margin-top:60px;" class="glass-panel">
+                <div style="padding: 40px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:20px;">
+                    <div style="width:70px; height:70px; border-radius:50%; background:var(--gradient-accent); display:flex; justify-content:center; align-items:center; color:#080b11; font-size:2rem; box-shadow:0 0 20px var(--accent-glow);">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 style="font-size:1.75rem;">Have questions about Deepanshu's profile?</h3>
+                    <p style="color:var(--text-secondary); max-width:600px; font-size:1rem; margin-bottom:10px;">
+                        Talk to Deepanshu Assistant! It knows everything about his technologies, experiences, strengths, and code achievements.
+                    </p>
+                    <a href="{% url 'ai_assistant' %}" class="btn btn-primary">
+                        Ask Deepanshu Assistant <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education Section -->
+    <section id="timeline" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Education & <span>Timeline</span></h2>
+                <p class="section-subtitle">Academic timeline and training experiences.</p>
+            </div>
+            
+            <div class="timeline-grid">
+                <!-- Left Column: Experience -->
+                <div class="timeline-column">
+                    <h3><i class="fas fa-briefcase"></i> Experience & Achievements</h3>
+                    
+                    <div class="timeline-container">
+                        <!-- Timeline Item 1 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-card glass-panel">
+                                <span class="timeline-date">Nov 2024 - Feb 2025</span>
+                                <h4 class="timeline-title">HCL Tech Trainee</h4>
+                                <h5 class="timeline-subtitle">HCL Technologies</h5>
+                                <ul class="timeline-details">
+                                    <li>Completed an industry-focused 3-month IT training module covering coding and engineering principles.</li>
+                                    <li>Engaged in structural database design, backend system integration paradigms, and teamwork drills.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Timeline Item 2 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-card glass-panel">
+                                <span class="timeline-date">Ongoing Achievements</span>
+                                <h4 class="timeline-title">Certifications & Competitions</h4>
+                                <h5 class="timeline-subtitle">Extra-Curricular Highlights</h5>
+                                <ul class="timeline-details">
+                                    <li><b>AICTE-SANKALP:</b> Awarded certificate from Government Skill Council for technical proficiency.</li>
+                                    <li><b>SANKALAN (Delhi University):</b> Represented college in programming hackathons at the annual CS festival.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column: Education -->
+                <div class="timeline-column">
+                    <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                    
+                    <div class="timeline-container">
+                        <!-- Education Item 1 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-card glass-panel">
+                                <span class="timeline-date">August 2022 - June 2026 (Expected)</span>
+                                <h4 class="timeline-title">B.Tech in Computer Science</h4>
+                                <h5 class="timeline-subtitle">KCC Institute of Technology & Management</h5>
+                                <p class="timeline-details">
+                                    Specializing in <b>Artificial Intelligence & Machine Learning (AIML)</b>. Deepening core fundamentals in Data Structures, Database Systems (DBMS), Operating Systems (OS), Computer Networks (CN), and Algorithm design.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In <span>Touch</span></h2>
+                <p class="section-subtitle">Feel free to contact me via email, phone, or fill out the form below.</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-card-info glass-panel">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-text-details">
+                            <h4>Email</h4>
+                            <p>deepanshuchauhan2244@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card-info glass-panel">
+                        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div class="contact-text-details">
+                            <h4>Phone</h4>
+                            <p>+91 8791095450</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card-info glass-panel">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-text-details">
+                            <h4>Location</h4>
+                            <p>Greater Noida, India</p>
+                        </div>
+                    </div>
+
+                    <!-- Social Handles -->
+                    <div style="padding: 10px;">
+                        <h4 style="margin-bottom:12px; font-size:1.05rem;">Connect with me</h4>
+                        <div class="social-links">
+                            <a href="https://github.com/DeepanshuChauhan4422" target="_blank" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/deepanshu-chauhan-179a40252" target="_blank" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.threads.com/@deepanshu._.dc" target="_blank" class="social-link" aria-label="Threads"><i class="fa-solid fa-at"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form glass-panel">
+                    <div class="form-success"></div>
+                    <div class="form-error"></div>
+                    
+                    <form id="contact-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="form-name">Full Name</label>
+                                <input type="text" id="form-name" required placeholder="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="form-email">Email Address</label>
+                                <input type="email" id="form-email" required placeholder="john@example.com">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group" style="margin-bottom: 20px;">
+                            <label for="form-subject">Subject</label>
+                            <input type="text" id="form-subject" required placeholder="Hiring discussion">
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 24px;">
+                            <label for="form-message">Message</label>
+                            <textarea id="form-message" required placeholder="Hello Deepanshu, we would like to interview you..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary submit-btn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="footer-logo">D.C</a>
+                <div class="footer-text">
+                    &copy; 2026 Deepanshu Chauhan. All Rights Reserved. Built with Django.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Core script -->
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
